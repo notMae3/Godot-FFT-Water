@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://dpoeua2yo3xmd"
+path="res://.godot/imported/FFT_64.glsl-0531bfb3aee26f82c64502c3adb2568d.res"
+
+[deps]
+
+source_file="res://shaders/FFT_64.glsl"
+dest_files=["res://.godot/imported/FFT_64.glsl-0531bfb3aee26f82c64502c3adb2568d.res"]
+
+[params]
+

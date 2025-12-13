@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cescbk60mry5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr2r3"]
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.11, 0.11, 0.11, 1)
+corner_radius_top_left = 4096
+corner_radius_top_right = 4096
+corner_radius_bottom_right = 4096
+corner_radius_bottom_left = 4096
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4u0a"]
+corner_radius_top_left = 4096
+corner_radius_top_right = 4096
+corner_radius_bottom_right = 4096
+corner_radius_bottom_left = 4096
+
+[node name="DirectionVisualizer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -504.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Circle" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(324, 324)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rr2r3")
+
+[node name="Panel" type="Panel" parent="Circle"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.101852
+anchor_top = 0.490741
+anchor_right = 0.509259
+anchor_bottom = 0.509259
+offset_right = -3.05176e-05
+offset_bottom = -3.05176e-05
+pivot_offset = Vector2(258, 6)
+theme_override_styles/panel = SubResource("StyleBoxFlat_k4u0a")
+metadata/_edit_use_anchors_ = true

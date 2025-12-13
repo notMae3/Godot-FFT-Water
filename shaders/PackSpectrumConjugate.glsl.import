@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cnwgeawf8r8so"
+path="res://.godot/imported/PackSpectrumConjugate.glsl-37dda04400869e8291e6f3063ae5bfc1.res"
+
+[deps]
+
+source_file="res://shaders/PackSpectrumConjugate.glsl"
+dest_files=["res://.godot/imported/PackSpectrumConjugate.glsl-37dda04400869e8291e6f3063ae5bfc1.res"]
+
+[params]
+

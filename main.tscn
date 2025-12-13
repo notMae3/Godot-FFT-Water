@@ -1,0 +1,894 @@
+[gd_scene load_steps=35 format=3 uid="uid://d0wrq1k3rybt7"]
+
+[ext_resource type="Script" uid="uid://ne3tkr2vafck" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Shader" uid="uid://8x5avys8y5ke" path="res://main_3d.gdshader" id="2_0xm2m"]
+[ext_resource type="ArrayMesh" uid="uid://bpl8ti502bcuv" path="res://assets/models/island/tower-complete-small.obj" id="3_5vw27"]
+[ext_resource type="ArrayMesh" uid="uid://ccx7fxu8nqoqv" path="res://assets/models/buoy/Models/OBJ format/buoy.obj" id="3_lquwl"]
+[ext_resource type="ArrayMesh" uid="uid://dmiyie1ubkqb8" path="res://assets/models/island/patch-sand-foliage.obj" id="4_kek77"]
+[ext_resource type="ArrayMesh" uid="uid://cb7ty3ulietde" path="res://assets/models/island/tower-complete-large.obj" id="5_4c57u"]
+[ext_resource type="Script" uid="uid://byjgr2h8g4nkw" path="res://camera.gd" id="6_272bh"]
+[ext_resource type="ArrayMesh" uid="uid://b17qsvpbb1i82" path="res://assets/models/island/platform.obj" id="6_efxa6"]
+[ext_resource type="ArrayMesh" uid="uid://bc4axlrw4417a" path="res://assets/blender meshes/marged_layers.obj" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://cescbk60mry5" path="res://scenes/direction_visualizer.tscn" id="10_efxa6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efxa6"]
+render_priority = 0
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 4
+shader_parameter/pass_layer_is_max = true
+shader_parameter/vertex_scalar = 50.0
+shader_parameter/mesh_size = 256.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.215
+shader_parameter/mesh_layer_sinking_slope_end = 0.2
+shader_parameter/mesh_layer_sinking_factor = 5.0
+shader_parameter/normal_strength = 0.5
+shader_parameter/specular_normal_strength = 1.0
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.112, 0.23, 0.29, 1)
+shader_parameter/scatter_color = Color(0.246, 0.43, 0.45, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 3.011
+shader_parameter/wave_peak_scatter_strength = 1.25
+shader_parameter/scatter_strength = 2.847
+shader_parameter/scatter_shadow_strength = 3.281
+shader_parameter/bubble_density = 0.46
+shader_parameter/roughness = 0.144
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(1, 1, 1, 1)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(1.64, 0.5, 1.26, 6.14)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0.212)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycdy4"]
+render_priority = 0
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 3
+shader_parameter/pass_layer_is_max = false
+shader_parameter/vertex_scalar = 50.0
+shader_parameter/mesh_size = 256.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.215
+shader_parameter/mesh_layer_sinking_slope_end = 0.2
+shader_parameter/mesh_layer_sinking_factor = 5.0
+shader_parameter/normal_strength = 0.5
+shader_parameter/specular_normal_strength = 1.0
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.112, 0.23, 0.29, 1)
+shader_parameter/scatter_color = Color(0.246, 0.43, 0.45, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 3.011
+shader_parameter/wave_peak_scatter_strength = 1.25
+shader_parameter/scatter_strength = 2.847
+shader_parameter/scatter_shadow_strength = 3.281
+shader_parameter/bubble_density = 0.46
+shader_parameter/roughness = 0.144
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(1, 1, 1, 1)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(1.64, 0.5, 1.26, 6.14)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0.212)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ycdy4")
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 2
+shader_parameter/pass_layer_is_max = false
+shader_parameter/vertex_scalar = 50.0
+shader_parameter/mesh_size = 256.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.215
+shader_parameter/mesh_layer_sinking_slope_end = 0.2
+shader_parameter/mesh_layer_sinking_factor = 5.0
+shader_parameter/normal_strength = 0.5
+shader_parameter/specular_normal_strength = 1.0
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.112, 0.23, 0.29, 1)
+shader_parameter/scatter_color = Color(0.246, 0.43, 0.45, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 3.011
+shader_parameter/wave_peak_scatter_strength = 1.25
+shader_parameter/scatter_strength = 2.847
+shader_parameter/scatter_shadow_strength = 3.281
+shader_parameter/bubble_density = 0.46
+shader_parameter/roughness = 0.144
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(1, 1, 1, 1)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(1.64, 0.5, 1.26, 6.14)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0.212)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_dg77c")
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 1
+shader_parameter/pass_layer_is_max = false
+shader_parameter/vertex_scalar = 50.0
+shader_parameter/mesh_size = 256.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.215
+shader_parameter/mesh_layer_sinking_slope_end = 0.2
+shader_parameter/mesh_layer_sinking_factor = 5.0
+shader_parameter/normal_strength = 0.5
+shader_parameter/specular_normal_strength = 1.0
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.112, 0.23, 0.29, 1)
+shader_parameter/scatter_color = Color(0.246, 0.43, 0.45, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 3.011
+shader_parameter/wave_peak_scatter_strength = 1.25
+shader_parameter/scatter_strength = 2.847
+shader_parameter/scatter_shadow_strength = 3.281
+shader_parameter/bubble_density = 0.46
+shader_parameter/roughness = 0.144
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(1, 1, 1, 1)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(1.64, 0.5, 1.26, 6.14)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0.212)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vivmo"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_w48qg")
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 0
+shader_parameter/pass_layer_is_max = false
+shader_parameter/vertex_scalar = 50.0
+shader_parameter/mesh_size = 256.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.215
+shader_parameter/mesh_layer_sinking_slope_end = 0.2
+shader_parameter/mesh_layer_sinking_factor = 5.0
+shader_parameter/normal_strength = 0.5
+shader_parameter/specular_normal_strength = 1.0
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.112, 0.23, 0.29, 1)
+shader_parameter/scatter_color = Color(0.246, 0.43, 0.45, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 3.011
+shader_parameter/wave_peak_scatter_strength = 1.25
+shader_parameter/scatter_strength = 2.847
+shader_parameter/scatter_shadow_strength = 3.281
+shader_parameter/bubble_density = 0.46
+shader_parameter/roughness = 0.144
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(1, 1, 1, 1)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(1.64, 0.5, 1.26, 6.14)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0.212)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mycd"]
+sky_top_color = Color(0.152, 0.5624, 0.8, 1)
+
+[sub_resource type="Sky" id="Sky_lquwl"]
+sky_material = SubResource("ProceduralSkyMaterial_7mycd")
+
+[sub_resource type="Environment" id="Environment_7mycd"]
+background_mode = 2
+sky = SubResource("Sky_lquwl")
+ssr_enabled = true
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.292
+fog_depth_curve = 2.92817
+fog_depth_begin = 0.0
+fog_depth_end = 1178.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+render_priority = 0
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 1
+shader_parameter/pass_layer_is_max = true
+shader_parameter/vertex_scalar = 6.22
+shader_parameter/mesh_size = 256.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.255
+shader_parameter/mesh_layer_sinking_slope_end = 0.24
+shader_parameter/mesh_layer_sinking_factor = 7.5
+shader_parameter/normal_strength = 0.5
+shader_parameter/specular_normal_strength = 1.0
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.112, 0.23, 0.29, 1)
+shader_parameter/scatter_color = Color(0.246, 0.43, 0.45, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 3.011
+shader_parameter/wave_peak_scatter_strength = 2.088
+shader_parameter/scatter_strength = 2.847
+shader_parameter/scatter_shadow_strength = 3.281
+shader_parameter/bubble_density = 0.46
+shader_parameter/roughness = 0.144
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(0, 1, 0, 0)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(1.225, 1, 1.93, 6.14)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kek77"]
+material = SubResource("ShaderMaterial_kek77")
+size = Vector2(256, 256)
+subdivide_width = 512
+subdivide_depth = 512
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
+render_priority = 0
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 3
+shader_parameter/pass_layer_is_max = true
+shader_parameter/vertex_scalar = 1.0
+shader_parameter/mesh_size = 150.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.255
+shader_parameter/mesh_layer_sinking_slope_end = 0.24
+shader_parameter/mesh_layer_sinking_factor = 7.5
+shader_parameter/normal_strength = 1.3
+shader_parameter/specular_normal_strength = 0.502
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.86, 0.86, 0.86, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.131, 0.336, 0.41, 1)
+shader_parameter/scatter_color = Color(0.133, 0.3, 0.44, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 1.61
+shader_parameter/wave_peak_scatter_strength = 1.225
+shader_parameter/scatter_strength = 1.87
+shader_parameter/scatter_shadow_strength = 1.0
+shader_parameter/bubble_density = 2.86
+shader_parameter/roughness = 0.22
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(0, 0, 0, 0)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(0, 0, 0, 0)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lquwl"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1bvp3")
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 2
+shader_parameter/pass_layer_is_max = false
+shader_parameter/vertex_scalar = 1.0
+shader_parameter/mesh_size = 150.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.255
+shader_parameter/mesh_layer_sinking_slope_end = 0.24
+shader_parameter/mesh_layer_sinking_factor = 7.5
+shader_parameter/normal_strength = 1.3
+shader_parameter/specular_normal_strength = 0.502
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.86, 0.86, 0.86, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.131, 0.336, 0.41, 1)
+shader_parameter/scatter_color = Color(0.133, 0.3, 0.44, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 1.61
+shader_parameter/wave_peak_scatter_strength = 1.225
+shader_parameter/scatter_strength = 1.87
+shader_parameter/scatter_shadow_strength = 1.0
+shader_parameter/bubble_density = 2.86
+shader_parameter/roughness = 0.22
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(0, 0, 0, 0)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(0, 0, 0, 0)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lquwl")
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 1
+shader_parameter/pass_layer_is_max = false
+shader_parameter/vertex_scalar = 1.0
+shader_parameter/mesh_size = 150.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.255
+shader_parameter/mesh_layer_sinking_slope_end = 0.24
+shader_parameter/mesh_layer_sinking_factor = 7.5
+shader_parameter/normal_strength = 1.3
+shader_parameter/specular_normal_strength = 0.502
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.86, 0.86, 0.86, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.131, 0.336, 0.41, 1)
+shader_parameter/scatter_color = Color(0.133, 0.3, 0.44, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 1.61
+shader_parameter/wave_peak_scatter_strength = 1.225
+shader_parameter/scatter_strength = 1.87
+shader_parameter/scatter_shadow_strength = 1.0
+shader_parameter/bubble_density = 2.86
+shader_parameter/roughness = 0.22
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(0, 0, 0, 0)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(0, 0, 0, 0)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_272bh"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7mycd")
+shader = ExtResource("2_0xm2m")
+shader_parameter/pass_layer = 0
+shader_parameter/pass_layer_is_max = false
+shader_parameter/vertex_scalar = 1.0
+shader_parameter/mesh_size = 150.0
+shader_parameter/mesh_default_size = 100.0
+shader_parameter/mesh_layer_scale_factor = 2.0
+shader_parameter/mesh_layer_sinking_slope_start = 0.255
+shader_parameter/mesh_layer_sinking_slope_end = 0.24
+shader_parameter/mesh_layer_sinking_factor = 7.5
+shader_parameter/normal_strength = 1.3
+shader_parameter/specular_normal_strength = 0.502
+shader_parameter/depth_factor = 47500.0
+shader_parameter/displacement_depth_falloff = 1.0
+shader_parameter/normal_depth_falloff = 1.0
+shader_parameter/foam_depth_falloff = 2.891
+shader_parameter/foam_color = Color(0.86, 0.86, 0.86, 1)
+shader_parameter/foam_roughness_modifier = 1.655
+shader_parameter/base_water_color = Color(0.131, 0.336, 0.41, 1)
+shader_parameter/scatter_color = Color(0.133, 0.3, 0.44, 1)
+shader_parameter/bubble_color = Color(0, 0.153, 0.133, 1)
+shader_parameter/height_modifier = 1.61
+shader_parameter/wave_peak_scatter_strength = 1.225
+shader_parameter/scatter_strength = 1.87
+shader_parameter/scatter_shadow_strength = 1.0
+shader_parameter/bubble_density = 2.86
+shader_parameter/roughness = 0.22
+shader_parameter/specular_view_dependence = 0.57
+shader_parameter/debug_layers = PackedInt32Array(0, 0, 0, 0)
+shader_parameter/water_layer_scale_factor = PackedFloat32Array(0, 0, 0, 0)
+shader_parameter/water_layer_foam_subtract = PackedFloat32Array(0, 0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lquwl"]
+material = SubResource("ShaderMaterial_272bh")
+size = Vector2(2048, 2048)
+subdivide_width = 256
+subdivide_depth = 256
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_kek77"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_5vw27"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_efxa6"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5vw27"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_5vw27"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_5vw27"]
+constant = 1.0
+
+[sub_resource type="VisualShader" id="VisualShader_kek77"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:2
+	vec4 n_out2p0 = COLOR;
+	float n_out2p4 = n_out2p0.a;
+
+
+// SmoothStep:3
+	float n_in3p0 = 0.00000;
+	float n_in3p1 = 1.00000;
+	float n_out3p0 = smoothstep(n_in3p0, n_in3p1, n_out2p4);
+
+
+// FloatConstant:4
+	float n_out4p0 = 1.000000;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out3p0);
+	COLOR.a = n_out4p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(580, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_5vw27")
+nodes/fragment/2/position = Vector2(60, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeSmoothStep_5vw27")
+nodes/fragment/3/position = Vector2(380, 160)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_5vw27")
+nodes/fragment/4/position = Vector2(380, 360)
+nodes/fragment/connections = PackedInt32Array(2, 4, 3, 2, 3, 0, 0, 0, 4, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
+shader = SubResource("VisualShader_kek77")
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_4c57u"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+mesh_follow_camera = true
+sun_rotation = Vector2(-0.14, 1.25)
+spectrum_texture_size = 256
+water_fps = 45.0
+repeat_time = 3.6e+06
+foam_bias = 0.536
+foam_decayRate = 0.024
+foam_add = 0.206
+Spec3_scale = 0.338
+Spec4_scale = 0.1
+Spec5_scale = 0.305
+Spec5_windSpeed = 7.185
+Spec6_scale = 0.253
+Spec6_windSpeed = 1.833
+Spec7_scale = 0.982
+Spec8_scale = 0.372
+
+[node name="3D" type="Node3D" parent="."]
+
+[node name="circle" type="MeshInstance3D" parent="3D"]
+extra_cull_margin = 16384.0
+mesh = ExtResource("10_4c57u")
+surface_material_override/0 = SubResource("ShaderMaterial_efxa6")
+surface_material_override/1 = SubResource("ShaderMaterial_vivmo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3D"]
+environment = SubResource("Environment_7mycd")
+
+[node name="Sun" type="DirectionalLight3D" parent="3D/WorldEnvironment"]
+transform = Transform3D(0.999743, -3.95968e-05, 0.0226873, 0, 0.999998, 0.00174533, -0.0226873, -0.00174488, 0.999741, 0, 0, 0)
+light_color = Color(1, 0.981667, 0.89, 1)
+light_angular_distance = 5.0
+
+[node name="models" type="Node3D" parent="3D"]
+visible = false
+
+[node name="buoy" type="MeshInstance3D" parent="3D/models"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.808, 0, 12.4512)
+mesh = ExtResource("3_lquwl")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="tower1" type="MeshInstance3D" parent="3D/models"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63847, 0, -0.686711)
+mesh = ExtResource("3_5vw27")
+skeleton = NodePath("../island")
+
+[node name="island" type="MeshInstance3D" parent="3D/models"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("4_kek77")
+
+[node name="tower2" type="MeshInstance3D" parent="3D/models"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57584, 0, -1.94251)
+mesh = ExtResource("5_4c57u")
+
+[node name="platform" type="MeshInstance3D" parent="3D/models"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305369, 5.81185)
+mesh = ExtResource("6_efxa6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="3D"]
+visible = false
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_kek77")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="3D"]
+visible = false
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_lquwl")
+
+[node name="Camera" type="Camera3D" parent="3D"]
+transform = Transform3D(-0.817145, 0.0692508, -0.572258, 0, 0.992758, 0.120137, 0.576432, 0.0981692, -0.811227, -30.4581, 16.4541, 25.1318)
+visible = false
+current = true
+script = ExtResource("6_272bh")
+sens = 0.004
+speed = 75.0
+sprint_factor = 2.5
+
+[node name="Control" type="Control" parent="3D/Camera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="3D/Camera/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.12066
+anchor_bottom = 0.115741
+offset_bottom = -21.0
+text = "FPS:
+Coords:
+Direction:"
+metadata/_edit_use_anchors_ = true
+
+[node name="DataTextures" type="HBoxContainer" parent="3D/Camera/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LeftLeft" type="VBoxContainer" parent="3D/Camera/Control/DataTextures"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="WindDirections" type="GridContainer" parent="3D/Camera/Control/DataTextures/LeftLeft"]
+custom_minimum_size = Vector2(260, 260)
+layout_mode = 2
+columns = 3
+
+[node name="DirectionVisualizer" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="DirectionVisualizer2" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="DirectionVisualizer3" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="DirectionVisualizer4" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="DirectionVisualizer5" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="DirectionVisualizer6" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="DirectionVisualizer7" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="DirectionVisualizer8" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections" instance=ExtResource("10_efxa6")]
+layout_mode = 2
+
+[node name="LabelParent" type="Control" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections"]
+layout_mode = 2
+
+[node name="WindDirections" type="Label" parent="3D/Camera/Control/DataTextures/LeftLeft/WindDirections/LabelParent"]
+layout_mode = 2
+offset_left = -176.0
+offset_top = -208.0
+offset_right = 84.0001
+offset_bottom = -185.0
+text = "WindDirections (rel W)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left" type="VBoxContainer" parent="3D/Camera/Control/DataTextures"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="InitialSpectrumTextures" type="GridContainer" parent="3D/Camera/Control/DataTextures/Left"]
+layout_mode = 2
+columns = 2
+
+[node name="1" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/InitialSpectrumTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_kek77")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/InitialSpectrumTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_kek77")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/InitialSpectrumTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_kek77")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/InitialSpectrumTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_kek77")
+expand_mode = 1
+
+[node name="LabelParent" type="Control" parent="3D/Camera/Control/DataTextures/Left/InitialSpectrumTextures"]
+layout_mode = 2
+
+[node name="InitialSpectrumTexturesLabel" type="Label" parent="3D/Camera/Control/DataTextures/Left/InitialSpectrumTextures/LabelParent"]
+layout_mode = 2
+offset_top = -293.0
+offset_right = 260.0
+offset_bottom = -270.0
+text = "InitialSpectrumTextures"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpectrumTextures" type="GridContainer" parent="3D/Camera/Control/DataTextures/Left"]
+custom_minimum_size = Vector2(260, 264)
+layout_mode = 2
+columns = 3
+
+[node name="1" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="5" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_efxa6")
+expand_mode = 1
+
+[node name="6" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_efxa6")
+expand_mode = 1
+
+[node name="7" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_efxa6")
+expand_mode = 1
+
+[node name="8" type="TextureRect" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_efxa6")
+expand_mode = 1
+
+[node name="LabelParent" type="Control" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures"]
+layout_mode = 2
+
+[node name="SpectrumTexturesLabel" type="Label" parent="3D/Camera/Control/DataTextures/Left/SpectrumTextures/LabelParent"]
+layout_mode = 2
+offset_left = -176.0
+offset_top = -208.0
+offset_right = 84.0001
+offset_bottom = -185.0
+text = "SpectrumTextures"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Middle" type="VBoxContainer" parent="3D/Camera/Control/DataTextures"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="DisplacementTextures" type="GridContainer" parent="3D/Camera/Control/DataTextures/Middle"]
+layout_mode = 2
+columns = 2
+
+[node name="1" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/DisplacementTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/DisplacementTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/DisplacementTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/DisplacementTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="LabelParent" type="Control" parent="3D/Camera/Control/DataTextures/Middle/DisplacementTextures"]
+layout_mode = 2
+
+[node name="DisplacementTexturesLabel" type="Label" parent="3D/Camera/Control/DataTextures/Middle/DisplacementTextures/LabelParent"]
+layout_mode = 2
+offset_top = -293.0
+offset_right = 260.0
+offset_bottom = -270.0
+text = "DisplacementTextures"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FoamData" type="GridContainer" parent="3D/Camera/Control/DataTextures/Middle"]
+layout_mode = 2
+columns = 2
+
+[node name="1" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/FoamData"]
+material = SubResource("ShaderMaterial_4c57u")
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_4c57u")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/FoamData"]
+material = SubResource("ShaderMaterial_4c57u")
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_4c57u")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/FoamData"]
+material = SubResource("ShaderMaterial_4c57u")
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_4c57u")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="3D/Camera/Control/DataTextures/Middle/FoamData"]
+material = SubResource("ShaderMaterial_4c57u")
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_4c57u")
+expand_mode = 1
+
+[node name="LabelParent" type="Control" parent="3D/Camera/Control/DataTextures/Middle/FoamData"]
+layout_mode = 2
+
+[node name="FoamDataLabel" type="Label" parent="3D/Camera/Control/DataTextures/Middle/FoamData/LabelParent"]
+layout_mode = 2
+offset_top = -293.0
+offset_right = 260.0
+offset_bottom = -270.0
+text = "FoamData"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="VBoxContainer" parent="3D/Camera/Control/DataTextures"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="SlopeTextures" type="GridContainer" parent="3D/Camera/Control/DataTextures/Right"]
+layout_mode = 2
+columns = 2
+
+[node name="1" type="TextureRect" parent="3D/Camera/Control/DataTextures/Right/SlopeTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="3D/Camera/Control/DataTextures/Right/SlopeTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="3D/Camera/Control/DataTextures/Right/SlopeTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="3D/Camera/Control/DataTextures/Right/SlopeTextures"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="LabelParent" type="Control" parent="3D/Camera/Control/DataTextures/Right/SlopeTextures"]
+layout_mode = 2
+
+[node name="SlopeTexturesLabel" type="Label" parent="3D/Camera/Control/DataTextures/Right/SlopeTextures/LabelParent"]
+layout_mode = 2
+offset_top = -293.0
+offset_right = 260.0
+offset_bottom = -270.0
+text = "SlopeTextures"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BouyancyData" type="GridContainer" parent="3D/Camera/Control/DataTextures/Right"]
+custom_minimum_size = Vector2(260, 260)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="3D/Camera/Control/DataTextures/Right/BouyancyData"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("Texture2DRD_5vw27")
+expand_mode = 1
+
+[node name="LabelParent" type="Control" parent="3D/Camera/Control/DataTextures/Right/BouyancyData"]
+layout_mode = 2
+
+[node name="BouyancyDataLabel" type="Label" parent="3D/Camera/Control/DataTextures/Right/BouyancyData/LabelParent"]
+layout_mode = 2
+offset_top = -293.0
+offset_right = 260.0
+offset_bottom = -270.0
+text = "BouyancyData"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VisualizationTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://d1agh0jadn3uq"
+path="res://.godot/imported/UpdateSpectrumForFFT.glsl-dbfca6a6f31be0d03e4c60d970798bf4.res"
+
+[deps]
+
+source_file="res://shaders/UpdateSpectrumForFFT.glsl"
+dest_files=["res://.godot/imported/UpdateSpectrumForFFT.glsl-dbfca6a6f31be0d03e4c60d970798bf4.res"]
+
+[params]
+

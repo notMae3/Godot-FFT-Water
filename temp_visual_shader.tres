@@ -1,0 +1,50 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://cl18v2olxt8jp"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_e31q7"]
+output_port_for_preview = 0
+operator = 6
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_rjp37"]
+output_port_for_preview = 0
+default_input_values = [0, 0.275, 1, 0.225, 2, 0.5]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5n3fs"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_5n3fs"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_e31q7"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+expanded_output_ports = [0]
+op_type = 0
+operator = 1
+
+[sub_resource type="VisualShaderNodeVectorFunc" id="VisualShaderNodeVectorFunc_e31q7"]
+output_port_for_preview = 0
+default_input_values = [0, Vector2(0, 0)]
+expanded_output_ports = [0]
+op_type = 0
+function = 4
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+"
+nodes/fragment/0/position = Vector2(480, 140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_5n3fs")
+nodes/fragment/2/position = Vector2(-1800, 120)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_5n3fs")
+nodes/fragment/3/position = Vector2(-1800, 220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_e31q7")
+nodes/fragment/4/position = Vector2(-1500, 120)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorFunc_e31q7")
+nodes/fragment/9/position = Vector2(-1300, 120)
+nodes/fragment/15/node = SubResource("VisualShaderNodeFloatOp_e31q7")
+nodes/fragment/15/position = Vector2(-1100, 120)
+nodes/fragment/16/node = SubResource("VisualShaderNodeSmoothStep_rjp37")
+nodes/fragment/16/position = Vector2(-900, 120)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 9, 0, 9, 1, 15, 0, 9, 2, 15, 1, 15, 0, 16, 2)

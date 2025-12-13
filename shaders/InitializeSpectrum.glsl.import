@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://chmljmj0ohhkd"
+path="res://.godot/imported/InitializeSpectrum.glsl-49b81944824a73ba1bd1aed5b9b34615.res"
+
+[deps]
+
+source_file="res://shaders/InitializeSpectrum.glsl"
+dest_files=["res://.godot/imported/InitializeSpectrum.glsl-49b81944824a73ba1bd1aed5b9b34615.res"]
+
+[params]
+
